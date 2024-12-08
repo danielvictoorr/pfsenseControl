@@ -19,7 +19,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('firewall') }}" class="nav-link">
                         <i class="nav-icon"></i>
                         <p>Firewall</p>
                     </a>
