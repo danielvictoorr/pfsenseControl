@@ -13,15 +13,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('users') }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
                         <p>Users</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('firewall') }}" class="nav-link">
-                        <i class="nav-icon"></i>
-                        <p>Firewall</p>
+                        <i class="fas fa-shield-alt"></i>
+                        <p> Firewall</p>
                     </a>
                 </li>
                 <li class="nav-item">

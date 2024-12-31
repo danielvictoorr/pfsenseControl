@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 
-@section('title', 'Firewall')
+@section('page-title', 'Firewall')
+
 
 @section('content')
 <div class="container">

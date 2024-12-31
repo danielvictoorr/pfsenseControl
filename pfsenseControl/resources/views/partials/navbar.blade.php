@@ -8,7 +8,7 @@
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-            <a class="nav-link" href="/pfsenseControl/pfsenseControl/public" role="button">
+            <a class="nav-link" href="{{ route('logout') }}" role="button">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
         </li>

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,15 +15,29 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return redirect('/login');
+});
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/firewall', function () {
     return view('firewall');
 })->name('firewall');
+
+Route::get('/users', function () {
+    return view('users');
+})->name('users');
+
+Route::get('/users', [UserController::class, 'index'])->name('users');
+
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/login'); 
+})->name('logout');
+
+
+
