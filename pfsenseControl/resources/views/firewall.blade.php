@@ -4,8 +4,15 @@
 
 
 @section('content')
-<div class="container">
-    <h1 class="mt-3">Gerenciamento de Firewall</h1>
-    <p>Bem-vindo à página de gerenciamento de configurações do Firewall.</p>
-</div>
+<!-- Main content -->
+<section class="content">
+        <div class="card">
+            <div class="card-body">  
+                <h2 class="mt-3">Gerenciamento de Firewall</h2>
+                
+            </div>
+        </div>
+
+</section>
+
 @endsection
