@@ -26,7 +26,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class=""></i>
+                        <i class="nav-icon fas fa-server"></i>
                         <p> Servers</p>
                     </a>
                 </li>

@@ -2,23 +2,67 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use Illuminate\Support\Facades\Log;
 
 class FirewallController extends Controller
 {
     public function index()
     {
         try {
-            // Fazendo a requisição à API externa
-            $url = getenv('EXTERNAL_API_URL');
-            $response = Http::get($url.'/api/v2/firewall/rules?limit=0&offset=0');
-            $firewallRules = $response->json(); // Assumindo que a API retorna JSON
+            // Configuração do cliente Guzzle
+            $client = new Client([
+                'base_uri' => getenv('services.external_api.url'),
+                'verify' => false, // Desativa a verificação SSL (não recomendado para produção)
+                'auth' => ['admin', '1234'], // Autenticação básica
+                'headers' => [
+                    'x-api-key' => getenv('API_KEY'),
+                ],
+            ]);
 
-            return view('firewall.index', compact('firewallRules'));
+            // Faz a requisição GET
+            $response = $client->get('/api/v2/firewall/rules', [
+                'query' => [
+                    'limit' => 0,
+                    'offset' => 0,
+                ],
+            ]);
+
+                      // Debugando a resposta
+                      $statusCode = $response->getStatusCode();
+                      $responseBody = $response->getBody()->getContents();
+                      $responseHeaders = $response->getHeaders();
+          
+                      // Log de debug
+                      Log::info('Requisição API bem-sucedida', [
+                          'status' => $statusCode,
+                          'headers' => $responseHeaders,
+                          'body' => $responseBody,
+                      ]);
+
+            // Verifica o status da resposta
+            if ($response->getStatusCode() === 200) {
+                $data = json_decode($response->getBody(), true); // Decodifica o JSON para um array associativo
+                $firewallRules = $data['data'] ?? []; // Captura os dados ou define um array vazio
+            } else {
+                $firewallRules = []; // Define um array vazio se a resposta não for bem-sucedida
+            }
+
+            // Retorna a view com os dados
+            return view('firewall', ['firewallRules' => $firewallRules]);
+        } catch (RequestException $e) {
+            // Captura erros de requisição
+            return view('firewall', [
+                'firewallRules' => [],
+                'error' => $e->getMessage(),
+            ]);
         } catch (\Exception $e) {
-            // Caso a API falhe
-            return view('firewall.index', ['firewallRules' => [], 'error' => $e->getMessage()]);
+            // Captura outros erros
+            return view('firewall', [
+                'firewallRules' => [],
+                'error' => $e->getMessage(),
+            ]);
         }
     }
 }
