@@ -24,9 +24,7 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/firewall', function () {
-    return view('firewall');
-})->name('firewall');
+Route::get('/firewall', [\App\Http\Controllers\FirewallController::class, 'index'])->name('firewall');
 
 Route::get('/users', function () {
     return view('users');

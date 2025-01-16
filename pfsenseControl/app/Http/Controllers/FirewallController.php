@@ -21,7 +21,6 @@ class FirewallController extends Controller
                 ],
             ]);
 
-            // Faz a requisição GET
             $response = $client->get('/api/v2/firewall/rules', [
                 'query' => [
                     'limit' => 0,
