@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class FirewallController extends Controller
 {
@@ -63,5 +64,23 @@ class FirewallController extends Controller
                 'error' => $e->getMessage(),
             ]);
         }
+    }
+
+
+    public function store(Request $request)
+    {
+        // Aqui você pode validar os dados
+        $data = $request->validate([
+            'type' => 'required|string',
+            'ipprotocol' => 'required|string',
+            'interface' => 'required|array',
+            'source' => 'required|string',
+            'destination' => 'required|string',
+            'descr' => 'nullable|string',
+        ]);
+
+        // Aqui você faria a lógica para salvar no banco ou enviar para o pfSense, etc.
+        // Por enquanto, vamos só retornar para a tela com sucesso:
+        return redirect()->back()->with('success', 'Regra adicionada com sucesso!');
     }
 }

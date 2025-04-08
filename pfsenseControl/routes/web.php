@@ -38,4 +38,8 @@ Route::get('/logout', function () {
 })->name('logout');
 
 
+Route::post('/firewall', [\App\Http\Controllers\FirewallController::class, 'store'])->name('firewall.store');
+
+
+
 
