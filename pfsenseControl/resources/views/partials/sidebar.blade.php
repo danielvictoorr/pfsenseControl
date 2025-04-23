@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('servers') }}" class="nav-link">
                         <i class="nav-icon fas fa-server"></i>
                         <p> Servers</p>
                     </a>

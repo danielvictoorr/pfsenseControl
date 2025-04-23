@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServersController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,9 @@ Route::get('/logout', function () {
 
 
 Route::post('/firewall', [\App\Http\Controllers\FirewallController::class, 'store'])->name('firewall.store');
+
+
+Route::get('/servers', [ServersController::class, 'index'])->name('servers');
 
 
 
