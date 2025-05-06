@@ -33,6 +33,8 @@ Route::get('/users', function () {
 
 Route::get('/users', [UserController::class, 'index'])->name('users');
 
+Route::post('/users', [App\Http\Controllers\UserController::class, 'store'])->name('users.store');
+
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/login'); 
