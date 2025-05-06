@@ -52,7 +52,7 @@
         <h5>Adicionar Usuário</h5>
 
         <form method="POST" action="{{ route('users.store') }}">
-            @csrf
+            <!-- @csrf -->
             <div class="form-group">
                 <label for="name">Nome</label>
                 <input type="text" name="name" class="form-control" required>
