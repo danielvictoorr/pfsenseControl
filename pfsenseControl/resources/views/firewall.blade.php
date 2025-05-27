@@ -64,7 +64,12 @@
                     <!-- Campos do formulário -->
                     <div class="form-group">
                         <label for="type">Tipo</label>
-                        <input type="text" class="form-control" id="type" name="type" required>
+                        <select class="form-control" id="type" name="type">
+                            <option value="allow">Permitir</option>
+                            <option value="deny">Negar</option>
+                            <option value="block">Bloquear</option>
+                            <option value="pass">Passar</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -74,7 +79,10 @@
 
                     <div class="form-group">
                         <label for="interface">Interface</label>
-                        <input type="text" class="form-control" id="interface" name="interface[]" required>
+                        <select class="form-control" id="interface" name="interface[]">
+                            <option value="lan">LAN</option>
+                            <option value="wan">WAN</option>
+                        </select>
                     </div>
 
                     <div class="form-group">

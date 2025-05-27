@@ -35,10 +35,15 @@ class FirewallController extends Controller
     public function insertRules(object $data)
     {
         try{
+            $firewallRules = new Firewall();
+
+            $data = $firewallRules->insertRules($data);
+
+            return view('firewall', ['firewallResponse' => $data]);
 
         }
         catch (\Exception $e) {
-            echo $e->getMessage();
+            view('firewall', ['firewallResponse' => $e->getMessage()]);
         }
     }
 }
