@@ -16,14 +16,13 @@ class ServersController extends Controller {
         {
             // Validação básica
             $validatedData = $request->validate([
-                'name' => 'required|string|max:255',
+                'nickname' => 'required|string|max:255',
                 'ip' => 'required|ip',
                 'apikey' => 'required|string|max:255',
                 'usuario' => 'required|string|max:255',
                 'password' => 'required|string|max:255',
             ]);
             
-            dd($validatedData);
             // Inserção no banco usando a Model
             Servers::insertServer($validatedData);
     
