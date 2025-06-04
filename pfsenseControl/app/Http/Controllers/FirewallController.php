@@ -32,9 +32,26 @@ class FirewallController extends Controller
     }
 
 
-    public function insertRules(object $data)
+    public function insertRules(Request $request)
     {
         try{
+            $type = $request->input('type');
+            $ipprotocol = $request->input('ipprotocol');
+            $interfaces = $request->input('interface'); // array
+            $source = $request->input('source');
+            $destination = $request->input('destination');
+            $descr = $request->input('descr');
+
+            $data = [
+                'type' => $type,
+                'ipprotocol' => $ipprotocol,
+                'interfaces' => $interfaces,
+                'source' => $source,
+                'destination' => $destination,
+                'descr' => $descr,
+            ];
+
+
             $firewallRules = new Firewall();
 
             $data = $firewallRules->insertRules($data);

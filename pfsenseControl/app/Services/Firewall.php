@@ -56,8 +56,10 @@ class Firewall extends ExternalApiService
     }
 
 
-    public function insertRules(object $rulesInformation): ?string
+    public function insertRules(array $rulesInformation): ?string
     {
+        print_r($rulesInformation);
+        exit;
         $requestBody =[
                 "type"=> "pass",
                 "interface"=> [

@@ -9,11 +9,23 @@ class Servers extends Model
 {
     use HasFactory;
 
-    protected $table = 'servers'; // Se a tabela for exatamente "servers", pode até omitir isso
+    protected $table = 'servers'; 
 
-    // Função para buscar todos os registros
+    protected $fillable = [
+        'nickname',
+        'ip',
+        'x_api_key',
+        'client_id',
+        'client_secret'
+    ];
+
     public static function getAllServers()
     {
         return self::all();
+    }
+
+    public static function insertServer($data)
+    {
+        return self::create($data);
     }
 }

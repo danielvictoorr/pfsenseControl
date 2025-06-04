@@ -42,9 +42,14 @@ Route::get('/logout', function () {
 
 
 Route::post('/firewall', [\App\Http\Controllers\FirewallController::class, 'store'])->name('firewall.store');
+Route::post('/firewall', [\App\Http\Controllers\FirewallController::class, 'insertRules'])->name('firewall.store');
+
+
 
 
 Route::get('/servers', [ServersController::class, 'index'])->name('servers');
+Route::post('/servers',[ServersController::class, 'insertServer'])->name('servers.insertServer');
+
 
 
 
