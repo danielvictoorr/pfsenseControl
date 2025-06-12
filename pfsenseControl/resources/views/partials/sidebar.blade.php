@@ -9,31 +9,31 @@
                 <li class="nav-item">
                     <a href="{{route('home')}}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
-                        <p>Dashboard</p>
+                        <p> Dashboard</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('users') }}" class="nav-link">
                         <i class="nav-icon fas fa-users"></i>
-                        <p>Users</p>
+                        <p> Users</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('firewall') }}" class="nav-link">
                         <i class="fas fa-shield-alt"></i>
-                        <p> Firewall</p>
+                        <p class="ml-3">Firewall Rules</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('servers') }}" class="nav-link">
                         <i class="nav-icon fas fa-server"></i>
-                        <p> Servers</p>
+                        <p> Firewall Servers</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cogs"></i>
-                        <p>Settings</p>
+                        <p> Settings</p>
                     </a>
                 </li>
             </ul>

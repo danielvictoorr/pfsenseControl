@@ -46,7 +46,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">Nome</label>
-                        <input type="text" name="name" class="form-control" required>
+                        <input type="text" name="nickname" class="form-control" required>
                     </div>
 
                     <div class="form-group">
@@ -56,17 +56,17 @@
 
                     <div class="form-group">
                         <label for="apikey">API Key</label>
-                        <input type="text" name="apikey" class="form-control" required>
+                        <input type="text" name="x_api_key" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label for="usuario">Usuário</label>
-                        <input type="text" name="usuario" class="form-control" required>
+                        <input type="text" name="client_id" class="form-control" required>
                     </div>
 
                     <div class="form-group">
                         <label for="password">Senha</label>
-                        <input type="password" name="password" class="form-control" required>
+                        <input type="password" name="client_secret" class="form-control" required>
                     </div>
                 </div>
 
