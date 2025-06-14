@@ -43,6 +43,7 @@ Route::get('/logout', function () {
 
 Route::post('/firewall', [\App\Http\Controllers\FirewallController::class, 'store'])->name('firewall.store');
 Route::post('/firewall', [\App\Http\Controllers\FirewallController::class, 'insertRules'])->name('firewall.store');
+Route::delete('/firewall/{id}', [\App\Http\Controllers\FirewallController::class, 'deleteRule'])->name('firewall.deleteRule');
 
 
 

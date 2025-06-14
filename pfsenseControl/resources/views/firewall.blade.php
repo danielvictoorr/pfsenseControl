@@ -6,13 +6,13 @@
 <!-- Main Content -->
 <div class="container">
     <h1 class="mt-3">Regras de Firewall</h1>
-<div>
+    <div>
 
-    <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#addRuleModal">
-    Adicionar Regra
-    </button>
+        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#addRuleModal">
+            Adicionar Regra
+        </button>
 
-</div>
+    </div>
 
     <table class="table table-bordered">
         <thead>
@@ -24,6 +24,7 @@
                 <th>Origem</th>
                 <th>Destino</th>
                 <th>Descrição</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +38,14 @@
                 <td>{{ $rule['source'] ?? 'N/A' }}</td>
                 <td>{{ $rule['destination'] ?? 'N/A' }}</td>
                 <td>{{ $rule['descr'] ?? 'N/A' }}</td>
+                <td>
+                    <form action="{{route('firewall.deleteRule', $rule['id'])}}" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir esta regra?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                    </form>
+                </td>
+
             </tr>
             @endforeach
             @else
@@ -49,9 +58,9 @@
 </div>
 
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
 @endif
 
 <div class="modal fade" id="addRuleModal" tabindex="-1" role="dialog" aria-labelledby="addRuleModalLabel" aria-hidden="true">

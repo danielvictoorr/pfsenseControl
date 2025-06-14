@@ -63,4 +63,17 @@ class FirewallController extends Controller
             view('firewall', ['firewallResponse' => $e->getMessage()]);
         }
     }
+
+    public function deleteRule(int $id){
+        try{
+            $firewallRules = new Firewall();
+            $firewallRules->deleteRules($id);
+
+            return $this->index();
+        }
+        catch (\Exception $e) {
+            view('firewall', ['firewallResponse' => $e->getMessage()]);
+        }
+        
+    }
 }

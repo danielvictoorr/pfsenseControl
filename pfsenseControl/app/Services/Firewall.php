@@ -114,5 +114,28 @@ class Firewall extends ExternalApiService
         ]);
     }
 
+    public function deleteRules(int $id){
+        $response = $this->client->delete('/api/v2/firewall/rule?id='.$id);
+     
+        $statusCode = $response->getStatusCode();
+        $responseBody = $response->getBody()->getContents();
+        $responseHeaders = $response->getHeaders();
+
+        Log::info('Requisição API bem-sucedida', [
+        'status' => $statusCode,
+        'headers' => $responseHeaders,
+        'body' => $responseBody,
+        ]);
+      
+        if ($response->getStatusCode() != 200) {
+            throw new \Exception('Erro na chamada à API: ' . $response->getBody());
+        }
+        
+        $data = json_decode($response->getBody(), true);
+
+        return $data;
+
+    }
+
 
 }
