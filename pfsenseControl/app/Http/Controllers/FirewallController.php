@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Servers;
 use App\Services\Firewall;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -14,8 +15,9 @@ class FirewallController extends Controller
     {
         try {
             $firewallRules = new Firewall();
+            $servers = new Servers();
 
-            return view('firewall', ['firewallRules' => $firewallRules->getRules()]);
+            return view('firewall', ['firewallRules' => $firewallRules->getRules(), 'interfaces' => $servers->getAllServers()]);
         } catch (RequestException $e) {
             // Captura erros de requisição
             return view('firewall', [

@@ -6,11 +6,17 @@
 <!-- Main Content -->
 <div class="container">
     <h1 class="mt-3">Regras de Firewall</h1>
-    <div>
+    <div class="d-flex align-items-center gap-2 mb-2">
 
-        <button type="button" class="btn btn-primary mb-2" data-toggle="modal" data-target="#addRuleModal">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addRuleModal">
             Adicionar Regra
         </button>
+        <select id="interfaceSelect" class="form-control w-auto ml-3">
+            <option value="all">Todas as Interfaces</option>
+            @foreach ($interfaces as $interface)
+            <option value="{{ $interface }}">{{ $interface->nickname }}</option>
+            @endforeach
+        </select>
 
     </div>
 

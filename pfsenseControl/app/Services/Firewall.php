@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Servers;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -12,19 +13,22 @@ use Psr\Http\Message\ResponseInterface;
 class Firewall extends ExternalApiService
 {
     private $client;
+    private Servers $servers;
     public function __construct() {
+        $this->servers = new Servers();
+        $data= $this->servers->getAllServers();
+
         $this->client = new Client([
             'base_uri' => getenv('services.external_api.url'),
             'verify' => false, // Desativa a verificação SSL (não recomendado para produção)
-            'auth' => ['admin', '1234'], // Autenticação básica
+            'auth' => [$data[0]->client_id, $data[0]->client_secret], 
             'headers' => [
-                'x-api-key' => getenv('API_KEY'),
+                'x-api-key' => $data[0]->x_api_key,
             ],
         ]);
     }
     public function getRules() :array
     {
-
         $response = $this->client->get('/api/v2/firewall/rules', [
             'query' => [
                 'limit' => 0,
